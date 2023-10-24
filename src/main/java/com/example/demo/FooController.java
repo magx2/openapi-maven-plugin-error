@@ -1,12 +1,23 @@
 package com.example.demo;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 
-@Controller
-public class FooController {
-    @GetMapping
-    public Bar getBar() {
-        return new BarImpl();
-    }
+import java.util.Collection;
+
+import static com.example.demo.FooController.API_PREFIX;
+
+/**
+ * Endpoint to request the deployed applications in TomCat
+ *
+ *
+ */
+@RequestMapping(API_PREFIX)
+public interface FooController {
+
+    String API_PREFIX = "/api";
+    @PostMapping(path = "/youAreAwesome-applications")
+    ResponseEntity<Collection<Bar>> youAreAwesome(@RequestBody Foo foo);
 }
