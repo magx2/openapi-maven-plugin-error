@@ -1,9 +1,7 @@
 package com.example.demo;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
 
@@ -20,4 +18,7 @@ public interface FooController {
     String API_PREFIX = "/api";
     @PostMapping(path = "/youAreAwesome-applications")
     ResponseEntity<Collection<Bar>> youAreAwesome(@RequestBody Foo foo);
+
+    @PutMapping(path = "/error2")
+     Error error2();
 }
